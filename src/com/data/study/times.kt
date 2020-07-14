@@ -15,7 +15,7 @@ fun fact(n:Int):Int {
 }
 
 fun main() {
-    val t = Transfer()
+    val t = Transfer.CreateInstance()
     t.tran("(a+c)*v-r")
     fact(20)
     //print(k)

@@ -2,9 +2,13 @@ package com.data.study
 
 import java.util.*
 
-class Transfer{
+class Transfer private constructor(b:Boolean){
+    val exp = b
+    companion object {
+        fun CreateInstance(b:Boolean = false) = Transfer(b)
+    }
     fun tran(s:String):String {
-        val l =  Stack<Char>()
+        val l = Stack<Char>()
         val ca = s.toCharArray()
         for (i in ca){
             if (i in 'a'..'z'){
@@ -15,30 +19,20 @@ class Transfer{
                 '(','*','/' ->{
                     l.push(i)
                 }
-                ')'->{
-                    while (l.peek()!='('){
+                ')','+','-'->{
+                    while (l.isNotEmpty()&&l.peek()!='('){
                         print(l.pop())
                     }
-                    l.pop()
+                    if (i==')') l.pop() else l.push(i)
                 }
-                '+','-'->{
-                    if (l.isNotEmpty()){
-                        do {
-                            val r= l.peek()
-                            if (r!='('){
-                                print(l.pop())
-                            } else{
-                                break
-                            }
-                        }while (l.isNotEmpty())
-                    }
-                    l.push(i)
-                }
+           }
+        }
+            while (l.isNotEmpty()) {
+                print(l.pop())
             }
         }
-        while (l.isNotEmpty()){
-            print(l.pop())
-        }
+
+
 
         return s
     }
