@@ -27,13 +27,9 @@ class Transfer private constructor(b:Boolean){
                 }
            }
         }
-            while (l.isNotEmpty()) {
-                print(l.pop())
-            }
+        while (l.isNotEmpty()) {
+            print(l.pop())
         }
-
-
-
         return s
     }
 }
